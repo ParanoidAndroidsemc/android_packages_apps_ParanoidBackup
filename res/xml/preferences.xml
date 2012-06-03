@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android">
+   
+         <Preference
+            android:key="backup_pad"
+            android:icon="@drawable/ic_backup"
+            android:title="@string/backup_pad"
+            android:summary="@string/backup_pad_summary" />
+            
+         <Preference
+            android:key="restore_pad"
+            android:icon="@drawable/ic_restore"
+            android:title="@string/restore_pad"
+            android:summary="@string/restore_pad_summary" />
+            
+         <!-- Preference
+            android:key="install_pad"
+            android:icon="@drawable/ic_install"
+            android:title="@string/install_pad"
+            android:summary="@string/install_pad_summary" / -->
+            
+         <Preference
+            android:key="remove_pad"
+            android:icon="@drawable/ic_remove"
+            android:title="@string/remove_pad"
+            android:summary="@string/remove_pad_summary" />
+            
+         <Preference
+            android:icon="@drawable/ic_about"
+            android:title="@string/about"
+            android:summary="@string/about_summary" />
+    
+</PreferenceScreen>
+

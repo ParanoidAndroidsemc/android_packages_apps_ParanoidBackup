@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ParanoidAndroid Backup</string>
+    <string name="backup_and_restore">Backup and restore</string>
+    <string name="backup_pad">Backup preferences</string>
+    <string name="backup_pad_summary">Backup pad.prop file to SD</string>
+    <string name="restore_pad">Restore preferences</string>
+    <string name="restore_pad_summary">Restore pad.prop from SD</string>
+    <string name="remove_pad">Delete backup</string>
+    <string name="remove_pad_summary">Current backups:</string>
+    <string name="backup_sucess">Sucessfully backed up pad.prop to %s!</string>
+    <string name="no_backups">No backups found!</string>
+    <string name="restore_dialog">Restore backup</string>
+    <string name="restore_sucess">Sucessfully restored pad.prop!</string>
+    <string name="remove_dialog">Delete backup</string>
+    <string name="remove_sucess">Sucessfully deleted %s!</string>
+    <string name="hdpi_display">HDPI display</string>
+    <string name="xhdpi_display">XHDPI display</string>
+    <string name="dagr8_prank">Are you DAGr8?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="about">About</string>
+    <string name="about_summary">Copyright (c) 2012 - ParanoidAndroid Project. Token icons by ~brsev @ deviantart</string>
+</resources>
