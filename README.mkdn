@@ -1,0 +1,22 @@
+ParanoidBackup
+==============
+
+Copyright (c) 2012 ParanoidAndroid Project
+
+
+Building from sources
+---------------------
+
+For building use
+
+    . build/envsetup.sh
+
+Lunch your device
+   
+    lunch cm_xxxx-userdebug
+
+and then make with mmm
+
+    mmm packages/apps/ParanoidBackup
+
+You can also get ParanoidAndroid sources, and ParanoidBackup will be automatically built
