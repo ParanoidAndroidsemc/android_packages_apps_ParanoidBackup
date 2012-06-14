@@ -57,7 +57,7 @@ public class MainActivity extends PreferenceActivity{
         mBackup.setOnPreferenceClickListener(new OnPreferenceClickListener() {
              public boolean onPreferenceClick(Preference preference) {
                  Calendar mCalendar = Calendar.getInstance();
-                 String mDate = mCalendar.get(Calendar.DAY_OF_MONTH)+"."+mCalendar.get(Calendar.MONTH)+"."+
+                 String mDate = mCalendar.get(Calendar.DAY_OF_MONTH)+"."+(mCalendar.get(Calendar.MONTH)+1)+"."+
                          mCalendar.get(Calendar.YEAR)+"."+mCalendar.get(Calendar.HOUR)+"."+mCalendar.get(Calendar.MINUTE)+"."
                          +mCalendar.get(Calendar.SECOND);
                  String mBackupFile = mBackupPath+mDate+".prop";
