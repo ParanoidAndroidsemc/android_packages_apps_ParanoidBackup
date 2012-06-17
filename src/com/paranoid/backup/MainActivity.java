@@ -16,6 +16,10 @@
 
 package com.paranoid.backup;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Calendar;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -25,12 +29,7 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
-import android.util.ExtendedPropertiesUtils;
 import android.widget.Toast;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
 
 public class MainActivity extends PreferenceActivity{
     
@@ -102,6 +101,14 @@ public class MainActivity extends PreferenceActivity{
                             updateSummary(mRemove);
                         }
                     });
+                    builder.setPositiveButton(R.string.delete_all, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                        	RunCommands.execute(new String[]{"busybox rm -rf "+mBackupPath}, 0);
+                        	updateSummary(mRemove);
+                        }});
+                    builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                        }});
                     AlertDialog alert = builder.create();
                     alert.show();
                  } else
