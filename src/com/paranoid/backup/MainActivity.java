@@ -82,10 +82,10 @@ public class MainActivity extends PreferenceActivity{
                              builder2.setTitle(R.string.restore_sucess);
                              builder2.setMessage(R.string.reboot_warning);
                              builder2.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                                 public void onClick(DialogInterface dialog, int id) {
+                         public void onClick(DialogInterface dialog, int id) {
                    	               PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
                    	               pm.reboot("");
-								}});
+				}});
                              builder2.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                                  public void onClick(DialogInterface dialog, int id) {
 								     dialog.dismiss();
