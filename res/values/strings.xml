@@ -36,5 +36,5 @@
     <string name="delete_all">Delete all</string>
     <string name="about">About</string>
     <string name="about_summary">Copyright (c) 2012 - ParanoidAndroid Project. Token icons by ~brsev @ deviantart</string>
-    
+    <string name="reboot_warning">Would you like to reboot to apply these changes?</string>
 </resources>

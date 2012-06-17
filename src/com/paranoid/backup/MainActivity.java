@@ -21,10 +21,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.PowerManager;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
@@ -73,11 +76,25 @@ public class MainActivity extends PreferenceActivity{
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                     builder.setTitle(R.string.restore_dialog);
                     builder.setItems(mItems, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int item) {
-                            RunCommands.execute(new String[]{"busybox mount -o rw,remount /system", "busybox cp "+mBackupPath+mItems[item]+" /system/pad.prop", "busybox chmod 644 /system/pad.prop", "busybox mount -o ro,remount /system"}, 0);
-                            Toast.makeText(MainActivity.this, R.string.restore_sucess, Toast.LENGTH_LONG).show();
-                        }
-                    });
+                    	 public void onClick(DialogInterface dialog, int item) {
+                             RunCommands.execute(new String[]{"busybox mount -o rw,remount /system", "busybox cp "+mBackupPath+mItems[item]+" /system/pad.prop", "busybox chmod 644 /system/pad.prop", "busybox mount -o ro,remount /system"}, 0);
+                             AlertDialog.Builder builder2 = new AlertDialog.Builder(MainActivity.this);
+                             builder2.setTitle(R.string.restore_sucess);
+                             builder2.setMessage(R.string.reboot_warning);
+                             builder2.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                 public void onClick(DialogInterface dialog, int id) {
+                   	               PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+                   	               pm.reboot("");
+								}});
+                             builder2.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                                 public void onClick(DialogInterface dialog, int id) {
+								     dialog.dismiss();
+                                }});
+                             AlertDialog alert = builder2.create();
+                             alert.show();
+                             
+                         }
+                     });
                     AlertDialog alert = builder.create();
                     alert.show();
                  } else
