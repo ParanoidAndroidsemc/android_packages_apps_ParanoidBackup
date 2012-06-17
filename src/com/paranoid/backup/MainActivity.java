@@ -100,15 +100,12 @@ public class MainActivity extends PreferenceActivity{
                             Toast.makeText(MainActivity.this, getString(R.string.remove_sucess).replace("%s", mItems[item]), Toast.LENGTH_LONG).show();
                             updateSummary(mRemove);
                         }
-                    });
-                    builder.setPositiveButton(R.string.delete_all, new DialogInterface.OnClickListener() {
+                    })
+                    .setPositiveButton(R.string.delete_all, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                         	RunCommands.execute(new String[]{"busybox rm -rf "+mBackupPath}, 0);
                         	updateSummary(mRemove);
-                        }});
-                    builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                        }});
+                    }});
                     AlertDialog alert = builder.create();
                     alert.show();
                  } else
