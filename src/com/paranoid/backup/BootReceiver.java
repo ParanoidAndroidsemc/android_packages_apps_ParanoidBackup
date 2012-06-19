@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.StringTokenizer;
 
 public class BootReceiver extends BroadcastReceiver { 
 	
@@ -17,14 +16,10 @@ public class BootReceiver extends BroadcastReceiver {
     	    final SharedPreferences sharedPreferences1 = context.getSharedPreferences(context.getPackageName() + "_preferences", Context.MODE_PRIVATE);
             final SharedPreferences.Editor editor = sharedPreferences1.edit();
             String Saved_Version = sharedPreferences1.getString("Version", "");
-    	
-    	    StringTokenizer tokens = new StringTokenizer(getVersion(), "-"); 
-	    String first = tokens.nextToken();
-	    String second = tokens.nextToken();
-	    String third = tokens.nextToken();
     		
- 	    if(!third.equals(Saved_Version)) {
- 	        editor.putString("Version", third);
+ 	    if(!getVersion().equals(Saved_Version)) {
+ 	    } else {
+ 	        editor.putString("Version", getVersion());
                 editor.commit();
  		
  	        Intent i = new Intent(context, MainActivity.class);
