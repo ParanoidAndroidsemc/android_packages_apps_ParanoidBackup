@@ -20,50 +20,27 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
-import java.io.IOException;
-import java.io.InputStream;
-
-public class BootReceiver extends BroadcastReceiver { 
+public class BootReceiver extends BroadcastReceiver {
 	
     @Override 
     public void onReceive(Context context, Intent intent) { 
         if(Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
-    	    final SharedPreferences sharedPreferences1 = context.getSharedPreferences(context.getPackageName() + "_preferences", Context.MODE_PRIVATE);
-            final SharedPreferences.Editor editor = sharedPreferences1.edit();
-            String Saved_Version = sharedPreferences1.getString("Version", "");
+    	    final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+            final SharedPreferences.Editor editor = sharedPreferences.edit();
+            String storedVersion = sharedPreferences.getString("version", "");
+            String currentVersion = String.valueOf(Utils.getRomVersion());
     		
- 	    if(!getVersion().equals(Saved_Version)) {
- 	    } else {
- 	        editor.putString("Version", getVersion());
-                editor.commit();
- 		
+ 	    if(!currentVersion.equals(storedVersion) && !storedVersion.equals("")) {
  	        Intent i = new Intent(context, MainActivity.class);
  	        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); 
 	        context.startActivity(i);
- 	    }
+ 	    } else {
+                editor.putString("version", currentVersion);
+                editor.commit();
+            }
 	}
-  }
-    
-  private String getVersion(){
-    ProcessBuilder cmd;
-    String result="";
-
-    try{
-         String[] args = {"/system/bin/toolbox", "getprop", "ro.pa.version"};
-         cmd = new ProcessBuilder(args);
-      
-         Process process = cmd.start();
-         InputStream in = process.getInputStream();
-         byte[] re = new byte[1];
-         while(in.read(re) != -1){
-             result = result + new String(re);
-         }
-         in.close();  
-     } catch(IOException ex){
-         ex.printStackTrace();
-     }
-     return result;
   }
     
 }
