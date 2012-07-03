@@ -127,28 +127,15 @@ public class MainActivity extends PreferenceActivity{
                  return true;
              }
          });
+
         /*
          * We can't detect screen automatically via API's. We need to use our ExtendedPropertiesUtils class. 
          */
 
-        if(!preferences.getBoolean("app_started", false)){
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage(R.string.dagr8_prank)
-                .setCancelable(false)
-                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                            finish();
-                    }
-                })
-                .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        preferences.edit().putBoolean("app_started", true).commit();
-                        dialog.cancel();
-                    }
-                });
-            AlertDialog alert = builder.create();
-            alert.show();
-        }
+        if(!Utils.getProp("ro.cm.version").equals("PARANOIDANDROID")) 
+            finish();
+        else
+            Toast.makeText(this, R.string.rom_not_supported, Toast.LENGTH_LONG).show();
     }
     
     private void updateSummary(Preference mPreference){

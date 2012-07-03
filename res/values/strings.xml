@@ -30,7 +30,7 @@
     <string name="remove_sucess">Sucessfully deleted %s!</string>
     <string name="hdpi_display">HDPI display</string>
     <string name="xhdpi_display">XHDPI display</string>
-    <string name="dagr8_prank">Are you DAGr8?</string>
+    <string name="rom_not_supported">This ROM is not supported by ParanoidBackup</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="delete_all">Delete all</string>
