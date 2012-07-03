@@ -132,10 +132,10 @@ public class MainActivity extends PreferenceActivity{
          * We can't detect screen automatically via API's. We need to use our ExtendedPropertiesUtils class. 
          */
 
-        if(!Utils.getProp("ro.cm.version").equals("PARANOIDANDROID")) 
-            finish();
-        else
+        if(!Utils.getProp("ro.cm.version").equals("PARANOIDANDROID")){
             Toast.makeText(this, R.string.rom_not_supported, Toast.LENGTH_LONG).show();
+            finish();
+        }
     }
     
     private void updateSummary(Preference mPreference){
